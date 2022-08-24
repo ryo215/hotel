@@ -1,0 +1,15 @@
+<?php
+include "koneksi.php";
+
+$nis=$_POST["nis"];
+$nama=$_POST["nama"];
+$jurusan=$_POST["jurusan"];
+$alamat=$_POST["alamat"];
+$jenis_kelamin=$_POST["jenis_kelamin"];
+
+
+mysqli_query($mysqli, "INSERT into datasiswa values('$nis', '$nama', '$alamat', '$jurusan', '$jenis_kelamin')")
+or die (mysqli_error($mysqli));
+
+header("location:/dtsiswa/?page=tampil");
+?>
