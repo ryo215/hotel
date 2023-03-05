@@ -20,40 +20,19 @@ public class lomgin extends javax.swing.JFrame {
 
 
 
-
-String user     = usertext1.getText();
- 
-        String password = pass1.getText();
- 
- 
- 
-        String cekuser      = null;
- 
-        String cekpassword  = null;
- 
- 
- 
-try {
-            java.sql.Statement stat = Connect.createStatement();
-            ResultSet result=stat.executeQuery ("select * from koneksi where "
-                    + "user='" + "password='" +usertext1.getText()+"'");
-            if (result.next()) {
-                if (pass1.getText().equals(result.getString("pass"))){
-                JOptionPane.showMessageDialog(null, "Login Berhasil");
-                this.dispose();
-                } else {
-                        JOptionPane.showMessageDialog(rootPane,"Password Salah");
-                        pass1.setText("");
-                        usertext1.requestFocus();
-                }
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "User Tidak Ditemukan");
-                usertext1.setText("");
-                pass1.setText("");
-                usertext1.requestFocus();
-            }
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(rootPane, "Gagal");
+if (txtusername.getText().equals("")){
+         JOptionPane.showMessageDialog(null, "dont forget to fill username");
+         txtusername.requestFocus();
         }
-    
+        else if(txtpassword.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"dont forget fill password");
+            txtpassword.requestFocus();
+        }
+        else if(txtusername.getText().contains("ryo")&& txtpassword.getText().contains("123")){
+            new home().show();
+            this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "username or password doesnt match");
+        }
     }
