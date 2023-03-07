@@ -42,35 +42,16 @@ public class Register extends javax.swing.JFrame {
  
  
  
- if(jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty() || jTextField3.getText().isEmpty() || jPasswordField1.getText().isEmpty() || jPasswordField2.getText().isEmpty()){
+if(jTextField1.getText().isEmpty() ||  jPasswordField1.getText().isEmpty() ){
             JOptionPane.showMessageDialog(null, "Ada data yang belum di isi","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        }else if(jPasswordField1.getText().length() < 7 || jPasswordField2.getText().length() < 7){
-            JOptionPane.showMessageDialog(null, "Password minimal terdiri dari 7 huruf","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        }else if(jTextField2.getText().length() <= 10){
-            JOptionPane.showMessageDialog(null, "No.Telpon minimal terdiri dari 10 angka","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            try{
-                String pass;
-                pass = enc.getMD5EncryptedValue(jPasswordField2.getText());
-                
-                sql = "SELECT * FROM tb_masyarakat WHERE username='"+ jTextField3.getText() +"'";
-                rs = stat.executeQuery(sql);
-            
-                if(rs.next()){
-                    JOptionPane.showMessageDialog(null, "Username sudah terdaftar","Informasi",JOptionPane.INFORMATION_MESSAGE);
-                }else{
-                    sql = "INSERT INTO tb_masyarakat VALUES ("+ null +", '"+ jTextField1.getText() +"', '"+ jTextField3.getText() +"', '"+ pass +"', '"+ jTextField2.getText() +"')";
-                    stat.execute(sql);
-                    JOptionPane.showMessageDialog(null, "Berhasi mendaftar, silahkan login!");
-
-                    new Login().show();
-                    this.dispose();
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
+        }else if(jPasswordField1.getText().length() < 3 ){
+            JOptionPane.showMessageDialog(null, "Password minimal terdiri dari 3 huruf","Informasi",JOptionPane.INFORMATION_MESSAGE);
         }
-    }
+       JOptionPane.showMessageDialog(null, "Berhasi mendaftar, silahkan login!");
+
+       
+       new login().show();
+                    this.dispose();
 
 
 
